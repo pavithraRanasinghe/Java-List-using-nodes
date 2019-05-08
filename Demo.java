@@ -19,7 +19,6 @@ class List{
 	}
 	public void remove(){
 		Node temp = front;
-		Node prev;
 		while(temp != null){
 			if(temp.next.next == null){
 				temp.next = null;
@@ -27,7 +26,7 @@ class List{
 			temp = temp.next;
 		}
 	}
-	
+
 	public void printList(){
 			Node temp=front;
 			System.out.print("[");
@@ -37,7 +36,31 @@ class List{
 			}
 			System.out.println("\b\b]");		
 	}
+
+	 public  void remove(int index){  
+        Node currNode = front;
+        Node prev = null; 
+        if (index == 0 && currNode != null) { 
+            front = currNode.next; // Changed head 
+  
+		} 
+		int counter = 0; 
+		while (currNode != null) { 
+  
+            if (counter == index) { 
+                prev.next = currNode.next; 
+                break; 
+            } 
+            else { 
+                prev = currNode; 
+                currNode = currNode.next; 
+                counter++; 
+            } 
+        } 
+    }
 }
+
+
 
 class Demo{
 	public static void main(String args[]){
@@ -48,13 +71,13 @@ class Demo{
 		list.add(40);
 		list.printList(); //[10,20,30,40,50]
 		
-		list.remove();
-		list.printList(); //[10,20,30,40]
+		//list.remove();
+		//list.printList(); //[10,20,30,40]
 		
-		/*list.remove(2); //public void remove(int index)
+		list.remove(2); //public void remove(int index)
 		list.printList(); //[10,20,40]
 		
-		list.add(2,300); //public void add(int index, int data)
+		/*list.add(2,300); //public void add(int index, int data)
 		list.printList(); //[10,20,300,40]
 		
 		list.add(new int[]{1,2,3});//public void add(int[] dataArray);
